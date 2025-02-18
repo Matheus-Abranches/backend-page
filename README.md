@@ -12,16 +12,16 @@ Esta é uma API REST desenvolvida em **Go** que implementa um CRUD (Create, Read
 
 ## 🏗️ Fluxo de Trabalho (Workflow)
 
-```mermaid
 flowchart LR
-    A[Cliente / Frontend] -->|Requisição HTTP (CRUD)| B(Controller)
-    B --> C(UseCase<br>Regras de Negócio)
-    C --> D(Repository<br>Operações CRUD)
-    D --> E[(Database<br>Usuário, SentEmail, etc.)]
+    A[Cliente / Frontend] -->|Requisicao HTTP (CRUD)| B(Controller)
+    B --> C(UseCase / Regras de Negocio)
+    C --> D(Repository / Operacoes CRUD)
+    D --> E[(Database: Usuario, SentEmail, etc.)]
     E --> D
     D --> C
     C --> B
     B -->|Resposta HTTP| A
+
 
 ## ⚙️ Como Rodar o Projeto
 
