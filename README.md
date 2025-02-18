@@ -12,15 +12,23 @@ Esta é uma API REST desenvolvida em **Go** que implementa um CRUD (Create, Read
 
 ## 🏗️ Fluxo de Trabalho (Workflow)
 
-flowchart LR
-    A[Cliente / Frontend] -->|Requisicao HTTP (CRUD)| B(Controller)
-    B --> C(UseCase / Regras de Negocio)
-    C --> D(Repository / Operacoes CRUD)
-    D --> E[(Database: Usuario, SentEmail, etc.)]
-    E --> D
-    D --> C
-    C --> B
-    B -->|Resposta HTTP| A
+1. **Cliente/Frontend**  
+   O usuário (via navegador ou ferramenta como Postman) faz uma requisição HTTP (CRUD) para criar, ler, atualizar ou deletar dados.
+
+2. **Controller**  
+   Recebe a requisição HTTP, faz a validação inicial dos dados e os repassa para o caso de uso adequado.
+
+3. **UseCase (Regras de Negócio)**  
+   Contém a lógica de negócio. Aqui são realizadas validações mais complexas, regras específicas e orquestração do fluxo. Em seguida, o UseCase solicita ao repositório (Repository) que interaja com o banco de dados.
+
+4. **Repository**  
+   Responsável pela comunicação com o banco de dados. Executa as operações CRUD (Create, Read, Update, Delete) nas tabelas correspondentes às entidades (Usuário, SentEmail etc.).
+
+5. **Database**  
+   É onde os dados de Usuários e E-mails Enviados (SentEmail) são efetivamente armazenados. Após as operações, o repositório retorna o resultado ao UseCase.
+
+6. **Retorno da Resposta**  
+   O UseCase retorna o resultado final (sucesso ou erro) para o Controller, que então envia a resposta HTTP ao Cliente/Frontend.
 
 
 ## ⚙️ Como Rodar o Projeto
